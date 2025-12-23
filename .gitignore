@@ -1,0 +1,28 @@
+# Исполняемые файлы
+*.exe
+*.out
+*.o
+parent
+child
+test
+
+# Результаты работы
+*.txt
+output.txt
+result.txt
+error.txt
+test.txt
+
+# Системные файлы
+.DS_Store
+Thumbs.db
+.vscode/
+
+# Временные файлы
+*~
+*.swp
+*.swo
+*.bak
+
+# Логи
+*.log

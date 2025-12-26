@@ -9,7 +9,7 @@ int main()
     char filename[1000];
     char Buffer[1000];
     float numbers[100];
-    // комменты сделал для себя
+    
     int pipe_fd_1[2]; // parent->child
     int pipe_fd_2[2]; // child->parent
     if (pipe(pipe_fd_1) == -1 || pipe(pipe_fd_2) == -1)
@@ -53,7 +53,7 @@ int main()
         }
         close(pipe_fd_1[1]);
         int status;
-        wait(&status);
+        wait(&status); //ожидание завершения процесса
         if (WIFEXITED(status))
         {
             int exit_code = WEXITSTATUS(status);

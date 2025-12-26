@@ -23,24 +23,20 @@ void* forward_elimination(void* arg) {
     int current_col = t->current_col;
     
     for (int i = t->start_row; i <= t->end_row; i++) {
-        if (i <= current_col) continue;
-        
+        if (i <= current_col) continue;    
         double factor = matrix[i][current_col] / matrix[current_col][current_col];
         for (int j = current_col; j <= n; j++) {
             matrix[i][j] -= factor * matrix[current_col][j];
         }
     }
-    
     free(t);
     return NULL;
 }
-
 void* backward_substitution(void* arg) {
     Task* t = (Task*)arg;
     double** matrix = t->matrix;
     double* solution = t->solution;
-    int n = t->total_size;
-    
+    int n = t->total_size;   
     for (int i = t->start_row; i >= t->end_row; i--) {
         solution[i] = matrix[i][n];
         for (int j = i + 1; j < n; j++) {
@@ -48,15 +44,12 @@ void* backward_substitution(void* arg) {
         }
         solution[i] /= matrix[i][i];
     }
-    
     free(t);
     return NULL;
 }
-
 int find_pivot(double** matrix, int col, int n) {
     int pivot_row = col;
-    double max_val = fabs(matrix[col][col]);
-    
+    double max_val = fabs(matrix[col][col]);   
     for (int i = col + 1; i < n; i++) {
         if (fabs(matrix[i][col]) > max_val) {
             max_val = fabs(matrix[i][col]);
@@ -65,7 +58,6 @@ int find_pivot(double** matrix, int col, int n) {
     }
     return pivot_row;
 }
-
 void swap_rows(double** matrix, int row1, int row2, int n) {
     for (int j = 0; j <= n; j++) {
         double temp = matrix[row1][j];
@@ -73,7 +65,6 @@ void swap_rows(double** matrix, int row1, int row2, int n) {
         matrix[row2][j] = temp;
     }
 }
-
 void parallel_gauss_elimination(double** matrix, double* solution, int n, int threads) {
     if (n == 0) return;
     

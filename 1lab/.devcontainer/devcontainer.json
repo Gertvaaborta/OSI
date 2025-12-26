@@ -1,5 +1,5 @@
 {
-    "name": "lab_001",
+    "name": "6laba",
     "build": {
         "dockerfile": "Dockerfile",
         "context": ".."

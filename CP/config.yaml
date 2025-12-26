@@ -1,0 +1,10 @@
+jobs:
+  A:
+    command: echo 'Job A' && sleep 1
+    deps: []
+    barrier: ""
+  
+  B:
+    command: echo 'Job B' && sleep 1
+    deps: ["A"]
+    barrier: "barrier1"
